@@ -30,7 +30,7 @@
             .addGenerator(new ContainerSplitGenerator())
             .addGenerator(new ContainerSplitGenerator())
             //.removeRooms()
-            .addIterator(new CorridorConnectionIterator())
+            .addNode(new CorridorConnectionIterator())
             //.addConnections(new roomsWithMissingConnectionsIterator())            
             .generate();
 

@@ -1,6 +1,11 @@
 import { Container } from './container.js';
 import { IteratorBase } from './iteratorBase.js';
 
+/**
+ * Connectes room to 
+ * @class ConnectionIterator
+ * @extends IteratorBase
+ */
 export class CorridorConnectionIterator extends IteratorBase {
 
     /**
