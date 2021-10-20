@@ -1,16 +1,5 @@
 import { Container } from './container.js';
-
-export class IteratorBase {
-
-
-    initialize(containerArray) {
-        this.containers = containerArray;
-    }
-
-    execute(currentContainer) {
-
-    }
-}
+import { IteratorBase } from './iteratorBase.js';
 
 export class CorridorConnectionIterator extends IteratorBase {
 

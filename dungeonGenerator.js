@@ -1,5 +1,7 @@
 import { Container } from "./src/container.js";
 import { DebugCanvas } from "./src/debugCanvas.js";
+import { IteratorBase } from "./src/iteratorBase.js";
+import { ExecuterBase } from "./src/executerBase.js";
 import RNG from "./src/rng.js";
 import { Tree } from "./src/tree.js";
 
@@ -8,15 +10,15 @@ export class DungeonGenerator {
     constructor(width, height, debug) {
         this.width = width;
         this.height = height;
-        
-       // RNG.setSeed(1);
+
+        // RNG.setSeed(1);
 
         if (debug) {
             this.debug = true;
             this.debugCanvas = new DebugCanvas(width, height);
         }
         this.generators = [];
-        this.iterators = [];
+        this.nodes = [];
         this.mainTree = new Tree();
     }
 
@@ -25,15 +27,14 @@ export class DungeonGenerator {
         return this;
     }
 
-    addIterator(iterator){
-        this.iterators.push(iterator);
+    addNode(node) {
+        this.nodes.push(node);
         return this;
     }
 
     nodesOnPosition(x, y) {
-        this.debugCanvas.point("red", x, y);
-        return this.mainTree.nodesOnPosition(x,y)
-        
+        //this.debugCanvas.point("red", x, y);
+        return this.mainTree.nodesOnPosition(x, y)
     }
 
     generate() {
@@ -45,11 +46,19 @@ export class DungeonGenerator {
                 this._generatorHandler.bind(this));
 
         let leafs = this.mainTree.getLeafs();
-        for (let i = 0; i < this.iterators.length; i++) {
-            this.iterators[i].initialize(leafs);
-            for (let j = 0; j < leafs.length; j++) {
-                this.iterators[i].execute(leafs[j]);                    
-            }                        
+        for (let i = 0; i < this.nodes.length; i++) {
+            this.nodes[i].initialize(leafs, this);
+            switch (true) {
+                case this.nodes[i] instanceof IteratorBase:
+                    for (let j = 0; j < leafs.length; j++) {
+                        this.nodes[i].execute(leafs[j], j);
+                    }
+                    break;
+                case this.nodes[i] instanceof ExecuterBase:                    
+                    this.nodes[i].execute();                    
+                    break;
+            }
+
         }
     }
 
