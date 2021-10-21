@@ -37,6 +37,15 @@ export class DungeonGenerator {
         return this.mainTree.nodesOnPosition(x, y)
     }
 
+    /**
+     * Searches all the rooms and returns the ones with the specified feature.
+     * @param {String} feature Case sensitive feature to search for.
+     * @returns {Array<Container>} Array of rooms with the specified feature.
+     */
+    findRoomByFeature(feature) {
+        return this.mainTree.getLeafs().filter(c=>c.features.includes(feature));
+    }
+
     generate() {
         console.log("Generating dungeon...");
         let mainContainer = new Container(0, 0, this.width, this.height);

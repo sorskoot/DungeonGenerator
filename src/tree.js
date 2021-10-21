@@ -37,7 +37,12 @@ export class Tree {
         }
         return queue
     }
-
+/**
+ * 
+ * @param {Number} x 
+ * @param {Number} y 
+ * @returns {Array<Container}
+ */
     nodesOnPosition(x, y) {
         let nodes = []
         if (this.leaf.contains(x, y))
