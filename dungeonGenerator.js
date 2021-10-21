@@ -4,6 +4,7 @@ import { IteratorBase } from "./src/iteratorBase.js";
 import { ExecuterBase } from "./src/executerBase.js";
 import RNG from "./src/rng.js";
 import { Tree } from "./src/tree.js";
+import { FilterGroupNode } from "./src/filterGroupNode.js";
 
 export class DungeonGenerator {
 
@@ -64,6 +65,7 @@ export class DungeonGenerator {
                     }
                     break;
                 case this.nodes[i] instanceof ExecuterBase:                    
+                case this.nodes[i] instanceof FilterGroupNode:                    
                     this.nodes[i].execute();                    
                     break;
             }
