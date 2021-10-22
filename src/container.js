@@ -18,6 +18,10 @@ export class Container {
             this.x + (this.w / 2),
             this.y + (this.h / 2)
         )
+
+        /**
+         * @type {Container[]}
+         */
         this.connections = [];
 
     }
