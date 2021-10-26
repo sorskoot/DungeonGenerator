@@ -1,6 +1,6 @@
 import { Container } from './container.js';
 import { IteratorBase } from './iteratorBase.js';
-
+import { roundToClosest } from './utils.js';
 /**
  * Connectes room to 
  * @class ConnectionIterator
@@ -33,15 +33,18 @@ export class CorridorConnectionIterator extends IteratorBase {
      */
     execute(currentContainer) {
         let firstX = currentContainer.center.x + currentContainer.w / 2;
-        let firstY = currentContainer.center.y;
+        let firstY = currentContainer.center.y;    
+
         let found = this.corridors.findIndex(corridor => corridor.contains(firstX+1, firstY));
         if (found !== -1 && this.corridors[found] !== currentContainer) {
+        
             currentContainer.connections = [new Connection(this.corridors[found], firstX - 1, firstY, "E"), ...currentContainer.connections];
             this.corridors[found].connections = [new Connection(currentContainer, firstX, firstY,"W"), ...this.corridors[found].connections];
         }
 
         firstX = currentContainer.center.x - currentContainer.w / 2 - 1;
         firstY = currentContainer.center.y;
+
         found = this.corridors.findIndex(corridor => corridor.contains(firstX-1, firstY));
         if (found !== -1 && this.corridors[found] !== currentContainer) {
             currentContainer.connections = [new Connection(this.corridors[found], firstX + 1, firstY,"W"), ...currentContainer.connections];

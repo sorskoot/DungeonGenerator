@@ -19,9 +19,9 @@ export class Container {
             this.y + (this.h / 2)
         )
 
-        /**
-         * @type {Container[]}
-         */
+        // /**
+        //  * @type {Container[]}
+        //  */
         this.connections = [];
 
     }
