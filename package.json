@@ -2,9 +2,22 @@
   "name": "dungeon-generator",
   "version": "1.0.0",
   "description": "Sorskoot's dungeon generator",
-  "main": "index.js",
-  "scripts": {},
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./generators": "./dist/generators/index.js",
+    "./utils": "./dist/utils/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
   "keywords": [],
   "author": "Sorskoot",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
 }
