@@ -1,10 +1,13 @@
 import { DebugCanvas } from "./debugCanvas.js";
+import { Connection } from "./index.js";
 import { Point } from "./point.js";
 import { rng } from "./utils/rng.js";
 
 export const H_RATIO = 0.45;
 export const W_RATIO = 0.45;
 export const MAXTRIES = 50;
+
+export interface ContainerData {}
 
 export class Container {
   lchild: Container | undefined;
@@ -17,7 +20,9 @@ export class Container {
   w: number;
   h: number;
   center: Point;
-  connections: Container[];
+  connections: Connection[];
+  containerData: ContainerData | undefined;
+
   constructor(x: number, y: number, w: number, h: number, locked = false) {
     this.locked = locked; // if locked, cannot used in generators
     this.features = [];

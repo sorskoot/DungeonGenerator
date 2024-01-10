@@ -10,5 +10,5 @@ export class IteratorBase extends NodeBase {
    * @param {Container} currentContainer The current container that is being iterated
    * @param {Number} index The current index of the container in all the containers
    */
-  execute(currentContainer: Container, index: number) {}
+  execute(currentContainer: Container, index: number = 0) {}
 }

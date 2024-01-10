@@ -2,8 +2,6 @@ import { Container } from "./container.js";
 import { DebugCanvas } from "./debugCanvas.js";
 import { IteratorBase } from "./iteratorBase.js";
 import { ExecuterBase } from "./executerBase.js";
-import { rng } from "./utils/rng.js";
-import { Tree } from "./tree.js";
 import { FilterGroupNode } from "./filterGroupNode.js";
 import { GeneratorBase } from "./generators/generatorBase.js";
 import { NodeBase } from "./nodeBase.js";
@@ -68,7 +66,7 @@ export class DungeonGenerator {
 
     let leafs = this.mainContainer.getLeafs();
     for (let i = 0; i < this.nodes.length; i++) {
-      this.nodes[i].initialize(leafs, this);
+      this.nodes[i].initialize(leafs);
       switch (true) {
         case this.nodes[i] instanceof IteratorBase:
           const iterator = this.nodes[i] as IteratorBase;

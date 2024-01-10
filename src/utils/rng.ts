@@ -20,7 +20,7 @@ class RNG {
    * Seed the number generator
    * @type {number} seed - Seed value
    */
-  setSeed(seed) {
+  setSeed(seed: number) {
     seed = seed < 1 ? 1 / seed : seed;
 
     this._seed = seed;
@@ -94,7 +94,7 @@ class RNG {
    * @param {Array} array Array to pick a random item from
    * @returns Randomly picked item, null when length=0
    */
-  getItem(array) {
+  getItem<T>(array: Array<T>) {
     if (!array.length) {
       return null;
     }
@@ -105,11 +105,11 @@ class RNG {
    * @param {Array} array Array to randomize
    * @returns New array with randomized items
    */
-  shuffle(array) {
+  shuffle<T>(array: Array<T>): Array<T> {
     let result = [];
     let clone = array.slice();
     while (clone.length) {
-      let index = clone.indexOf(this.getItem(clone));
+      let index = clone.indexOf(this.getItem(clone)!);
       result.push(clone.splice(index, 1)[0]);
     }
     return result;
@@ -119,7 +119,7 @@ class RNG {
    * @param {Object} data key = whatever, value=weight (relative probability)
    * @returns whatever
    */
-  getWeightedValue(data) {
+  getWeightedValue(data: { [key: string]: number }) {
     let total = 0;
 
     for (let id in data) {
@@ -152,7 +152,7 @@ class RNG {
   /**
    * Set a previously retrieved state.
    */
-  setState(state) {
+  setState(state: number[]) {
     this._s0 = state[0];
     this._s1 = state[1];
     this._s2 = state[2];

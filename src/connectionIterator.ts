@@ -1,4 +1,5 @@
 import { Container } from "./container.js";
+import { Orientation } from "./index.js";
 import { IteratorBase } from "./iteratorBase.js";
 import { roundToClosest } from "./utils/utils.js";
 /**
@@ -7,11 +8,12 @@ import { roundToClosest } from "./utils/utils.js";
  * @extends IteratorBase
  */
 export class CorridorConnectionIterator extends IteratorBase {
+  corridors!: Container[];
   /**
    * initialize the iterator
    * @param {Array<Container>} containerArray
    */
-  initialize(containerArray) {
+  initialize(containerArray: Container[]) {
     /**
      * @type {Array<Container>}
      */
@@ -32,7 +34,7 @@ export class CorridorConnectionIterator extends IteratorBase {
    *  - remove duplicate code
    *  - lower the change of a connection after the first one
    */
-  execute(currentContainer) {
+  execute(currentContainer: Container) {
     let firstX = currentContainer.center.x + currentContainer.w / 2;
     let firstY = currentContainer.center.y;
 
@@ -101,8 +103,17 @@ export class CorridorConnectionIterator extends IteratorBase {
   }
 }
 
-class Connection {
-  constructor(container, x, y, orientation) {
+export class Connection {
+  container: any;
+  orientation: string;
+  x: number;
+  y: number;
+  constructor(
+    container: Container,
+    x: number,
+    y: number,
+    orientation: Orientation
+  ) {
     this.container = container;
     this.x = x;
     this.y = y;

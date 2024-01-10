@@ -1,16 +1,9 @@
 import { rng } from "../utils/rng.js";
-import { Tree } from "../tree.js";
 import { Container, W_RATIO, MAXTRIES, H_RATIO } from "../container.js";
 import { GeneratorBase } from "./generatorBase.js";
 import { roundToClosest } from "../utils/utils.js";
 
 export class ContainerSplitGenerator extends GeneratorBase {
-  /**
-   *
-   * @param {Tree} container
-   * @param {Number} tried
-   * @returns Tree with 2 new containers.
-   */
   execute(
     container: Container,
     tried: number = 0

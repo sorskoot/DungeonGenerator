@@ -1,4 +1,3 @@
-import { DungeonGenerator } from "../dungeonGenerator.js";
 import { Container } from "./container.js";
 
 /**
@@ -6,15 +5,13 @@ import { Container } from "./container.js";
  */
 export class NodeBase {
   containers!: Array<Container>;
-  dungeonGenerator: DungeonGenerator;
 
   /**
    * instantiates a new Node. Should be extended by subclasses.
    * @param {Array<Container>} containerArray
    * @param {DungeonGenerator} dungeonGenerator
    */
-  initialize(containerArray: any, dungeonGenerator: any) {
+  initialize(containerArray: Container[]) {
     this.containers = containerArray;
-    this.dungeonGenerator = dungeonGenerator;
   }
 }

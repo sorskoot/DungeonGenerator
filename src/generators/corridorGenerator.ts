@@ -1,5 +1,4 @@
 import { rng } from "../utils/rng.js";
-import { Tree } from "../tree.js";
 import { Container, W_RATIO, MAXTRIES, H_RATIO } from "../container.js";
 import { GeneratorBase } from "./generatorBase.js";
 import { roundToClosest } from "../utils/utils.js";
@@ -11,7 +10,7 @@ export class CorridorGenerator extends GeneratorBase {
     super();
     this.width = width || 9;
   }
-  execute(container: Container, tried = 0) {
+  execute(container: Container, tried = 0): Array<Container | undefined> {
     let r1, r2, r3, r4;
     const isVertical = rng.getUniform() < 0.5;
     if (isVertical) {
@@ -96,9 +95,7 @@ export class CorridorGenerator extends GeneratorBase {
 
     t2.lchild = r3;
     t2.rchild = r4;
-    // tree.rchild.lchild = r1;
-    // tree.rchild.rchild = r3;
-    r1.console();
+
     return [r1, r3, r4];
   }
 }

@@ -6,3 +6,5 @@ export class Point {
     this.y = y;
   }
 }
+
+export type Orientation = "N" | "S" | "E" | "W";
