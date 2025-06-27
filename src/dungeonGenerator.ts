@@ -6,7 +6,9 @@ import { FilterGroupNode } from './filterGroupNode.js';
 import { GeneratorBase } from './generators/generatorBase.js';
 import { NodeBase } from './nodeBase.js';
 
-export class DungeonGenerator {
+export class DungeonGenerator {}
+
+export class DungeonGeneratorOld {
     width: number;
     height: number;
     debug = false;
